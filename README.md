@@ -22,7 +22,7 @@ note: add short description and diagram
 
 ### Part-by-Part Building Process
 
-> Note: this project is being transferred Github near its completion, so only the last version of the independent programs and the final combined project (containing slightly altered versions of those programs) are included in this repository. However, snippets of older code are included in the detailed breakdown below in order to illustrate the process.
+> Note: this project is being transferred Github near its completion, so only the final combined project (containing slightly altered versions of previous independent programs) are included in this repository. However, snippets of older code are included in the detailed breakdown below in order to illustrate the process.
 
 <physical_calc> </physical_calc>
 <joystick_input> </joystick_input>
