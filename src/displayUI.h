@@ -246,7 +246,7 @@ void printResults(const char *colourCode, float targetMass, const char* colours[
     offset = 0;
     for(int i = 0; i < numOfCols; i++) {
         const char* suffix = (i == numOfCols - 1) ? "" : "   ";
-        offset += snprintf(strBuffer + offset, sizeof(strBuffer) - offset, "%s:%.0fpts%s", colours[i], masses[i], suffix);
+        offset += snprintf(strBuffer + offset, sizeof(strBuffer) - offset, "%s:%.2fg%s", colours[i], masses[i], suffix);
     }
     drawCenteredText(strBuffer, 230, 1, LIGHTEST_ACCENT, DARKEST_ACCENT);
 
