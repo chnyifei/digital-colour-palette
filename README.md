@@ -4,6 +4,16 @@
   <img src="./assets/digitalColourPaletteDemo.gif" width="500">
 </p>
 
+### Screens
+
+<table>
+  <tr>
+    <td><img src="./assets/colourSelectScreen.jpeg" width="250"></td>
+    <td><img src="./assets/massSelectScreen.jpeg" width="250"></td>
+    <td><img src="./assets/resultsScreen.jpeg" width="250"></td>
+  </tr>
+</table>
+
 ## **Executive Summary**
 
 This device allows the user to select for desired hue, value, and mass, then displays the exact clay mixing formula (ratio and grams) using the onboard screen. Built on a Raspberry Pi Pico with a 2.4" SPI TFT display and analog joystick, soldered onto perfboard and battery-powered.
@@ -31,8 +41,6 @@ This decive runs a three-screen state machine. SELECT_COLOUR, SELECT_MASS, and R
 
 ![FSM Diagram](./assets/digitalColourPaletteFSM1.drawio.png)
 
-note: maybe add diagram of three screens
-
 ### Part-by-Part Building Process
 
 > Note: this project was built and tested as independent subsystems before being merged into the final combined program in this repository. Snippets of older code are included in the detailed breakdown below in order to illustrate the process.
@@ -45,7 +53,7 @@ Calculates the actual ratios and masses of clay colours based off of FIMO's mixi
 
 </details><details><summary><b>Joystick Input</b></summary>
 
-Input is detected by stateless readJoystick for raw zone detection, and delayed auto-shift (DAS) and auto-repeat-rate acceleration (ARR) is determined by per-screen functions selColourJoy and selMassJoy using static local variables. A 500ms hold delay gates the first repeat, then positions are returned every 200ms on the colour selection screen. The mass selection screen adds another layer of acceleration, dropping from 150ms to 50ms between returns after 1100ms of holding in the same direction. Select mass also uses left / right on the joytick to increment place values for faster, more precise number tuning.
+Input is detected by stateless readJoystick for raw zone detection, and delayed auto-shift (DAS) and auto-repeat-rate acceleration (ARR) is determined by per-screen functions selColourJoy and selMassJoy using static local variables. A 500ms hold delay gates the first repeat, then positions are returned every 200ms on the colour selection screen. The mass selection screen adds another layer of acceleration, dropping from 150ms to 10ms between returns after 1100ms of holding in the same direction. Select mass also uses left / right on the joytick to increment place values for faster, more precise number tuning.
 
 ([`joystick.h`](./src/joystick.h))
 
@@ -71,7 +79,7 @@ Handles 2D array logic and controls calls to all other functions using boolean f
 
 </details><details><summary><b>Physical Assembly</b></summary>
 
-Soldered onto a 40x60mm perfboard and powered by 3x AAA pack. TFT power used VBUS for prototyping and is switched to VSYS for final assembly.
+Soldered onto a 40x60mm perfboard and powered by 3x AAA pack. TFT power used VBUS for prototyping and is switched to 3V3 for final assembly.
 
 ![Wiring Diagram](./assets/digitalColourPaletteWiring.png)
 ([`colourPalette.kicad_sch`](./hardware/colourPalette.kicad_sch))
@@ -86,4 +94,5 @@ A physical enclosure built in SolidWorks may be revisited if I gain access to 3D
 
 ## Repo Strucutre
 > src/      firmware source (PlatformIO)
+> hardware/ KiCad schematic + wiring diagram
 > assets/   photos / demo gif
