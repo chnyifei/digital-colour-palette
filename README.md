@@ -39,7 +39,7 @@ This device allows the user to select for desired hue, value, and mass, then dis
 
 This decive runs a three-screen state machine. SELECT_COLOUR, SELECT_MASS, and RESULTS are tracked via a ScreenState enum using currentScreen/previousScreen global variables.
 
-![FSM Diagram](./assets/digitalColourPaletteFSM1.drawio.png)
+![FSM Diagram](./assets/digitalColourPaletteFSM.drawio.png)
 
 ### Part-by-Part Building Process
 
