@@ -217,12 +217,19 @@ void printGramSelect(float currentMass, uint16_t bgColour, float placeVal, bool 
 }
 
 // --- Print results screen ---
-void printResults(const char *colourCode, float targetMass, const char* colours[], float ratios[], float masses[], int numOfCols) {
+void printResults(const char *colourCode, float targetMass, const char* colours[], float ratios[], float masses[], int numOfCols, int tintShade) {
 
     char strBuffer[40];
+    int offset = 0;
 
     // Target colour and mass
-    snprintf(strBuffer, sizeof(strBuffer), "target colour: %s", colourCode);
+    offset = snprintf(strBuffer, sizeof(strBuffer), "target colour: %s", colourCode);
+    if(tintShade !=0) {
+        if(tintShade > 0) {
+            offset += snprintf(strBuffer + offset, sizeof(strBuffer) - offset, "+");
+        }
+        offset += snprintf(strBuffer + offset, sizeof(strBuffer) - offset, "%d", tintShade);
+    }
     drawCenteredText(strBuffer, 60, 1, LIGHTEST_ACCENT, DARKEST_ACCENT);
     snprintf(strBuffer, sizeof(strBuffer), "target mass: %.2fg", targetMass);
     drawCenteredText(strBuffer, 75, 1, LIGHTEST_ACCENT, DARKEST_ACCENT);
@@ -234,7 +241,7 @@ void printResults(const char *colourCode, float targetMass, const char* colours[
 
     // Ratios
     drawCenteredText("> RATIO <", 160, 1, LIGHTEST_ACCENT, DARKEST_ACCENT);
-    int offset = 0;
+    offset = 0;
     for(int i = 0; i < numOfCols; i++) {
         const char* suffix = (i == numOfCols - 1) ? "" : "   ";
         offset += snprintf(strBuffer + offset, sizeof(strBuffer) - offset, "%s:%.0fpts%s", colours[i], ratios[i], suffix);

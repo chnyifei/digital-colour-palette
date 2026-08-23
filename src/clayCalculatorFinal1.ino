@@ -166,7 +166,7 @@ void loop() {
           j++;
         }
 
-        printResults(HUES[currentHueIndex].name, currentMass, colours, ratios, masses, numOfCols);
+        printResults(HUES[currentHueIndex].name, currentMass, colours, ratios, masses, numOfCols, currentTintShade);
 
         previousScreen = currentScreen;
       }
