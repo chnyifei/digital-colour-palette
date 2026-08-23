@@ -37,7 +37,7 @@ This device allows the user to select for desired hue, value, and mass, then dis
 
 ### State Machine
 
-This decive runs a three-screen state machine. SELECT_COLOUR, SELECT_MASS, and RESULTS are tracked via a ScreenState enum using currentScreen/previousScreen global variables.
+This device runs a three-screen state machine. SELECT_COLOUR, SELECT_MASS, and RESULTS are tracked via a ScreenState enum using currentScreen/previousScreen global variables.
 
 ![FSM Diagram](./assets/digitalColourPaletteFSM.drawio.png)
 
@@ -59,7 +59,7 @@ Input is detected by stateless readJoystick for raw zone detection, and delayed 
 
 </details><details><summary><b>Colour Display</b></summary>
 
-Blends base clay hues in RGB888 to avoid quantization loss using hand-calibrated per-pigment strength balues. Black and white are blended after the hues with their own weights.The main changes to this program were a series of iterations to accurately mimic physical pigment blending.
+Blends base clay hues in RGB888 to avoid quantization loss using hand-calibrated per-pigment strength values. Black and white are blended after the hues with their own weights.The main changes to this program were a series of iterations to accurately mimic physical pigment blending.
 
 Base hue strengths were established early on to reflect the strengths of physical pigments, with colours such as yellow being weaker and colours such as green being stronger. Black is represented by a dark, desaturated green, as the mix of chromatic pigments used to make black often leave green undertones. White is represented by a yellow-leaning off-white, caused by the plasticizers in polymer clay oxidizing over time. Combining all these adjustments, pigment-accurate mix results could be shown using the SPI display.
 
@@ -92,7 +92,7 @@ A physical enclosure built in SolidWorks may be revisited if I gain access to 3D
 - [ ] 3D printed enclosure
 - [ ] Expanded colour reference grid (interpolate mixes to smaller steps)
 
-## Repo Strucutre
-> src/      firmware source (PlatformIO)
-> hardware/ KiCad schematic + wiring diagram
-> assets/   photos / demo gif
+## Repo Structure
+> src/      firmware source (PlatformIO)  
+> hardware/ KiCad schematic + wiring diagram  
+> assets/   photos / demo gif  
