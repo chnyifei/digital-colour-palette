@@ -43,7 +43,7 @@ This device runs a three-screen state machine. SELECT_COLOUR, SELECT_MASS, and R
 
 ### Part-by-Part Building Process
 
-> Note: this project was built and tested as independent subsystems before being merged into the final combined program in this repository. Snippets of older code are included in the detailed breakdown below in order to illustrate the process.
+> Note: this project was built and tested as independent subsystems before being merged into the final combined program in this repository.
 
 <details><summary><b>Clay Calculation</b></summary>
 
